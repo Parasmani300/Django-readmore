@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Example to show read more</h1>
+    {% if stories %}
+    {% for key,value in stories.items %}
+        {% if value|length <= 15 %}
+        <h1 >{{value}} </h1>
+        {%else%}
+        <h1 id="cont">{{value|truncatechars:15}}<a href="#" onclick="method1('{{value}}'); ">Readmore</a> </h1>
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+</body>
+<script>
+    function method1(value){
+        document.getElementById("cont").innerHTML = value;
+    }
+</script>
+</html>
